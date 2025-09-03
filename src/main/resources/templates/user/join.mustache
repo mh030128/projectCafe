@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title> Create an Account </title>
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/join/join.css">
+
+    <!-- Apply Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    {{>layout/header}}
+
+    <!--<main>
+        <section class="join-form">
+            <h2> Create an Account </h2>
+
+            {{#errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+            {{/errorMessage}}
+
+            <form action="/user/join" method="post">
+
+                <div class="info_id">
+                    <label>아이디</label>
+                    <input type="text" id="userId" name="userId" placeholder="아이디" required>
+                    <button>중복확인</button>
+                </div>
+
+                <label>비밀번호</label>
+                <input type="password" name="userPw" placeholder="비밀번호" required>
+
+                <label>이름</label>
+                <input type="text" name="userName" placeholder="이름" required>
+
+                <label>휴대폰 번호</label>
+                <input type="text" name="userPhone" placeholder="휴대폰 번호 입력 ('-' 제외 11자리 입력)">
+
+                <label>이메일</label>
+                <input type="email" name="userEmail" placeholder="이메일" required>
+
+                <label>우편번호</label>
+                <input type="text" id="userAddrPost" name="userAddrPost" placeholder="우편번호" readonly>
+
+                <label>주소</label>
+                <input type="text" id="userAddr" name="userAddr" placeholder="주소" readonly>
+                <button type="button" onclick="searchAddress()">주소검색</button>
+
+                <label>상세주소</label>
+                <input type="text" id="userAddrDetail" name="userAddrDetail" placeholder="상세주소 입력">
+
+                <button type="submit"> 가입하기 </button>
+            </form>
+        </section>
+    </main>-->
+
+    <main>
+        <section class="join-form">
+            <h2> Create an account </h2>
+            {{#errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+            {{/errorMessage}}
+
+            <form action="/user/join" method="post">
+
+                <div class="info_id" id="info__id">
+                    <label>아이디</label>
+                    <input type="text" name="userId" placeholder="아이디 입력 (6~20자)">
+                    <button>중복확인</button>
+                </div>
+                <div class="info-pw">
+                    <label>비밀번호</label>
+                    <input type="password" name="userPw" placeholder="비밀번호 입력 (문자, 숫자, 특수문자 포함 8~20자)">
+                    <label>비밀번호 확인</label>
+                    <input type="password" placeholder="비밀번호 재입력">
+                </div>
+                <div class="info-name">
+                    <label>이름</label>
+                    <input type="text" name="userName" placeholder="이름" required>
+                </div>
+                <div class="info-phone">
+                    <label>휴대폰 번호</label>
+                    <input type="text" name="userPhone" placeholder="휴대폰 번호 입력 ('-' 제외 11자리 입력)">
+                </div>
+                <div class="info-emial">
+                    <label>이메일</label>
+                    <input type="email" name="userEmail" placeholder="이메일" required>
+                </div>
+                <div class="info-addr">
+                    <label>우편번호</label>
+                    <input type="text" id="userAddrPost" name="userAddrPost" placeholder="우편번호" readonly>
+
+                    <label>주소</label>
+                    <input type="text" id="userAddr" name="userAddr" placeholder="주소" readonly>
+                    <button type="button" onclick="searchAddress()">주소검색</button>
+
+                    <label>상세주소</label>
+                    <input type="text" id="userAddrDetail" name="userAddrDetail" placeholder="상세주소 입력">
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+
+    {{>layout/footer}}
+
+    <!-- 기능_daum/kakao 우편번호 API -->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function searchAddress() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 우편번호 자동입력
+                    document.getElementById('userAddrPost').value = data.zonecode;
+                    // 주소 자동 입력
+                    document.getElementById('userAddr').value = data.address;
+                    // 상세주소는 수동 입력
+                    document.getElementById('userAddrDetail').focus();
+                }
+            }) .open();
+        }
+    </script>
+</body>
+</html>

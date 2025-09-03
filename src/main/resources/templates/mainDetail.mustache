@@ -1,0 +1,35 @@
+<!-- templates/mainDetail.mustache -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Detail</title>
+    <link rel="stylesheet" href="/css/mainDetail/style.css">
+
+    <!-- google font 적용-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+{{> layout/header}}  <!-- header include -->
+
+<main>
+    <nav class="banner">
+        <a href="/menu" class="banner-btn">Menu</a>
+        <a href="/community" class="banner-btn">Commu</a>
+        <a href="/faq" class="banner-btn">FAQ</a>
+        <a href="/shopping" class="banner-btn">Shopping</a>
+    </nav>
+
+    <section class="main-content">
+        <h1>메인 디테일 페이지</h1>
+        <p>이곳이 mainDetail 페이지 내용입니다.</p>
+    </section>
+</main>
+
+{{> layout/footer}}  <!-- footer include -->
+
+</body>
+</html>

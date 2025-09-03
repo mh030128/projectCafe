@@ -1,0 +1,33 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between; /* 좌/우로 요소 배치 */
+    align-items: center;
+    padding: 0 20px; /* 좌우 여백 */
+    box-sizing: border-box; /* padding 포함 width 계산 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.header-right {
+    display: flex; /* 버튼들을 가로로 정렬 */
+    gap: 10px;    /* 버튼 사이 간격 */
+}
+
+.header-right .btn {
+    padding: 6px 12px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.header-right .btn:hover {
+    background-color: #555;
+}
